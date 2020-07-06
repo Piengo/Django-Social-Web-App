@@ -1,0 +1,12 @@
+{% extends 'home/base_secondary.html' %}
+{% load static %}
+
+{% block body %}
+  <div class="text-center" style="padding-top: 60px; color: white;">
+    <h2>You have logged out.</h2>
+  </div>
+
+  <div class="text-center">
+    <a href="{% url 'login' %}" style="padding-top: 10px; color: white;">login Again</a>
+  </div>
+{% endblock %}

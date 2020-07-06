@@ -1,0 +1,50 @@
+{% extends 'home/base_secondary.html' %}
+
+{% block title %}
+    <title>register</title>
+{% endblock title %}
+
+{% block body %}
+    <div class="text-center" style="padding-bottom: 40px;">
+        <form id="target" class="form-vertical" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% include 'home/form_template.html' %}
+            <div class="container">
+                <button type="submit" id="loginBtn" class="btn btn-default">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        var $j = jQuery.noConflict();
+    
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                $demo.text("Geolocation is not supported by this browser.");
+            }
+        }
+    
+        function showPosition(position) {
+        $j.ajax(
+            {
+                type: 'POST',
+                url: 'location/',
+                data: {
+                    lat: position.coords.latitude,
+                    long: position.coords.longitude,
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                }
+            }
+        );
+    }
+
+    $j('#loginBtn').click(function(e){
+        e.preventDefault();
+        getLocation();
+        $j('#target').submit();
+    })
+    </script>
+{% endblock body %}

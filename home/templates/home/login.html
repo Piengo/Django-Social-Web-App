@@ -1,0 +1,45 @@
+{% extends 'home/base_secondary.html' %}
+{% load static %}
+
+{% block body %}
+  <form id="target" class="form-horizontal" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% include 'home/form_template.html' %}
+    <div class="text-center" style="padding: 10px;">
+        <button id="loginBtn" type="submit" class="btn btn-default">login</button> <h3 style="color: white;">Don't have an account? <a href="{% url 'home:register' %}" style="padding-top: 10px; color: white;">Sign up.</a></h3>
+    </div>
+  </form>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    var $j = jQuery.noConflict();
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function showPosition(position) {
+        $j.ajax(
+            {
+                type: 'POST',
+                url: 'location/',
+                data: {
+                    lat: position.coords.latitude,
+                    long: position.coords.longitude,
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                }
+            }
+        );
+    }
+
+    $j('#loginBtn').click(function(e){
+        e.preventDefault();
+        getLocation();
+        $j('#target').submit();
+    })
+</script>
+{% endblock %}

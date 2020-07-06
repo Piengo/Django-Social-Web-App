@@ -1,0 +1,40 @@
+{% for field in form %}
+    <!-- checking for errors -->
+    {{ field.errors }}
+    
+    
+    
+        <div class="container">
+            <div class="text-center">
+                <label style="color: white;width: 100%;padding: 12px 20px;margin: 8px 0;display: inline-block;border-radius: 4px;box-sizing: border-box;">{{ field.label_tag }}</label>
+                {{ field }}
+            </div>
+        </div>
+   
+
+{% endfor %}
+{% for field in user_form %}
+    <!-- checking for errors -->
+    {{ field.errors }}
+    
+    <div class="container">
+        <div class="text-center">
+            <label style="color: white;width: 100%;padding: 12px 20px;margin: 8px 0;display: inline-block;border-radius: 4px;box-sizing: border-box;">{{ field.label_tag }}</label>
+            {{ field }}
+        </div>
+    </div>
+
+{% endfor %}
+{% for field in profile_form %}
+    <!-- checking for errors -->
+    {{ field.errors }}
+    
+    
+        <div class="container">
+            <div class="text-center">
+                <label style="color: white;width: 100%;padding: 12px 20px;margin: 8px 0;display: inline-block;border-radius: 4px;box-sizing: border-box;">{{ field.label_tag }}</label>
+                {{ field }}
+            </div>
+        </div>
+    
+{% endfor %}
