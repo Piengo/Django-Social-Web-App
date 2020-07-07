@@ -3,45 +3,35 @@
 {% block body %}
 <style>
     body{
-        position: absolute;
-        z-index: -10;
+        background: white;
     }
 </style>
 
-
+    <div class="text-center" style="margin-bottom: 60px;">
+        <h1 style="margin-top: 80px;color: lightgrey;color: rgba(121,9,79,1);">Conversations:</h1>
+    </div>
     {% if not threads %}
         <div style="padding: 120px;">
-            <h2>You do not have any messages threads yet, <a href="{% url 'home:index' %}">click here</a> to discover new people!</h2>
+            <h2>You do not have any messages yet, <a href="{% url 'home:index' %}">click here</a> to discover new people!</h2>
         </div>
     {% else %}
         {% for thread in threads %}
             {% if user == thread.second %}
-                <div class="text-center" style="padding-top: 70px;">
-                    <div class="container" style="background-color: lightgrey; border-radius: 25px; padding-bottom: 10px; display: inline-block; width: 200px;">
-                        <!-- <span class="contact-status online"></span> -->
-                        
-                        <!-- <div style="display: inline-block; padding-right: 5px; font-size: large;">
-                            <p class="name" style="font-size: medium;">{{ thread.first }}</p>
-                        </div> -->
-                        <div style="display: inline-block; padding-top: 10px;">
-                            <a href="{% url 'textApp:chaturl' thread.first %}">{{ thread.first }}
+                <div class="text-center" style="margin-top: 15px;">
+                    <div class="container" style="background-color: lightgrey; border-radius: 25px; padding-bottom: 10px; display: inline-block; width: 200px;padding-bottom: 10px;">
+                        <div style="display: inline-block;padding-top: 10px;">
+                            <a href="{% url 'textApp:chaturl' thread.first %}" style="color: rgba(121,9,79,1);font-size: large;">{{ thread.first }}
                                 <span class="glyphicon glyphicon-comment"></span>
                             </a>       
                         </div>
-                                
-                        <!-- <div style="padding-top: 5px;"><p class="preview">hello there!</p></div> -->
                     </div>
                 </div>
             {% endif %}
             {% if user == thread.first %}
-                <div class="text-center" style="padding-top: 70px;">
-                    <div class="container" style="background-color: lightgrey; border-radius: 25px; padding-top: 10px; display: inline-block; max-width: 200px;">
-                        <span class="contact-status online"></span>
-                        
-                        <div style="display: inline-block; padding-right: 5px; font-size: large;">
-                            <!-- <p class="name" style="font-size: medium;">{{ thread.second }}</p> -->
-                        </div>
-                        <div style="display: inline-block;">
+                <div class="text-center" style="margin-top: 15px;">
+                    <div class="container" style="background-color: lightgrey; border-radius: 25px; padding-top: 10px; display: inline-block; max-width: 200px;padding-bottom: 10px;">
+                    
+                        <div style="display: inline-block;padding-top: 10px;">
                             <a href="{% url 'textApp:chaturl' thread.second %}">{{ thread.second }}
                                 <span class="glyphicon glyphicon-comment"></span>
                             </a>       

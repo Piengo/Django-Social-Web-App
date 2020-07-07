@@ -1,11 +1,29 @@
 {% extends 'home/base.html' %}
+{% block head %}
+<script>
+    function set(){
+        var btn = document.getElementById("id_profile_picture");
+        btn.style.background = "white";
+        btn.style.margin = "auto";
+    }
+    window.onload = set;
+</script>
+{% endblock head %}
 
 {% block body %}
+<style>
+    body{
+        color: black;
+    }
+    a{
+        color: white;
+    }
+</style>
 
 <div class="text-center">
     <form class="form-horizontal" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <div style="margin: 10px;"><img style="max-width: 50%;height: auto;min-height: 220px;" class="rounded-circle" src="{{ user.profile.profile_picture.url }}"/></div>
+        <div style="margin: 10px;"><img style="margin-top: 80px;width: 50%;" class="rounded-circle" src="{{ user.profile.profile_picture.url }}"/></div>
         {% include 'home/form_template.html' %}
         <div class="container">
             <button style="margin: 5px;" type="submit" value="update" class="btn btn-default">Submit</button>

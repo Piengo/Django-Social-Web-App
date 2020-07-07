@@ -1,4 +1,15 @@
 {% extends 'home/base_secondary.html' %}
+{% load static %}
+{% block head %}
+<script>
+    function set(){
+        var btn = document.getElementById("id_profile_picture");
+        btn.style.background = "white";
+        btn.style.margin = "auto";
+    }
+    window.onload = set;
+</script>
+{% endblock head %}
 
 {% block title %}
     <title>register</title>

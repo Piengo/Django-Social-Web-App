@@ -27,7 +27,8 @@ class IndexView(generic.ListView):
         me.location = user_location
         me.save()
         other_people = Profile.objects.annotate(distance=Distance('location',user_location)).order_by('distance')[0:6]
-        return render(request, self.template_name, {'other_people': other_people, 'me':me})
+        first_person = other_people[0] 
+        return render(request, self.template_name, {'other_people': other_people, 'me':me, 'first_person':first_person})
 
 
 class ProfileUpdate(UpdateView):

@@ -5,6 +5,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block head %}
+    {% endblock %}
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -28,15 +30,12 @@
   <body>
     
     {% if user.is_authenticated %}
-    <div id="frame" style="position: fixed;top: 0;">
+    <div id="frame" style="position: fixed;top: 0;width: 100%;z-index: 3;">
       <div class="content">
         <div class="contact-profile">
           
             <a href="{% url 'home:profile-update' user.profile.id %}"><img class="rounded-circle" width="40" height="40" src="{{ user.profile.profile_picture.url }}"/></a>
-            <p style="font-size: large; padding-right: 5px;">{{ user }}</p>
-            <!-- <a href="{% url 'home:about' %}" class="btn btn-default btn-md">
-              <span class="glyphicon glyphicon-question-sign"></span>
-            </a> -->
+            <p style="font-size: large; padding-right: 5px;color: rgba(121,9,79,1);font-size: x-large;">{{ user }}</p>
             <div class="social-media" style="padding-right: 5px;">
             
       
@@ -58,12 +57,12 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <ul class="navbar-nav col-sm-4">
       
-                      <li class="dropdown-item"><a class="nav-link" href="{% url 'home:about' %}">About</a></li>
-                      <li class="dropdown-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-                      <li class="dropdown-item"><a class="nav-link" href="{% url 'home:register' %}">Register</a></li>
+                      <li class="dropdown-item"><a class="nav-link" href="{% url 'home:about' %}" style="color: purple;">About</a></li>
+                      <li class="dropdown-item"><a class="nav-link" href="{% url 'logout' %}" style="color: purple;">Logout</a></li>
               
                   </ul>
                 </div>
+              </div>
       
             </div>
           
