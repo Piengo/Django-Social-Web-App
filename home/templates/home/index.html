@@ -6,25 +6,32 @@
   <div class="carousel-inner" style="margin-bottom: 30px;">
 
     {% for person in other_people %}
-    {% if person.id != me.id and person.id == first_person.id %}
 
-    <div class="carousel-item active">
-      <img style="border-radius: 8px;max-width: 50%;height: auto;margin-top: 60px; margin-bottom: 10px;" src="{{ person.profile_picture.url }}" />
-      <div style="background-color: lightgrey;width: 50%;min-height: 70px;margin: auto;border-radius: 8px; padding-top: 10px;">
-        <p style="display: inline-block;max-width: 70%;">{{ person.Bio }}</p> <a href="{% url 'textApp:chaturl' person %}" class="btn btn-primary btn-md" style="margin: 10px;"><span class="glyphicon glyphicon-comment"></span></a>
+    {% if person.Gender == me.Preference %}
+
+      {% if person.id != me.id and person.id == first_person.id %}
+
+      <div class="carousel-item active">
+        <img style="border-radius: 8px;max-width: 50%;height: auto;margin-top: 60px; margin-bottom: 10px;" src="{{ person.profile_picture.url }}" />
+        <div style="background-color: lightgrey;width: 50%;min-height: 70px;margin: auto;border-radius: 8px; padding-top: 10px;">
+          <p style="display: inline-block;max-width: 70%;">{{ person.Bio }}</p> <a href="{% url 'textApp:chaturl' person %}" class="btn btn-primary btn-md" style="margin: 10px;"><span class="glyphicon glyphicon-comment"></span></a>
+        </div>
       </div>
-    </div>
 
-    {% elif person.id != me.id %}
+      {% elif person.id != me.id %}
 
-    <div class="carousel-item">
-      <img style="border-radius: 8px;max-width: 50%;height: auto;margin-top: 60px; margin-bottom: 10px;" src="{{ person.profile_picture.url }}" />
-      <div style="background-color: lightgrey;width: 50%;min-height: 70px;margin: auto;border-radius: 8px; padding-top: 10px;">
-        <p style="display: inline-block;max-width: 70%;">{{ person.Bio }}</p> <a href="{% url 'textApp:chaturl' person %}" class="btn btn-primary btn-md" style="margin: 10px;"><span class="glyphicon glyphicon-comment"></span></a>
+      <div class="carousel-item">
+        <img style="border-radius: 8px;max-width: 50%;height: auto;margin-top: 60px; margin-bottom: 10px;" src="{{ person.profile_picture.url }}" />
+        <div style="background-color: lightgrey;width: 50%;min-height: 70px;margin: auto;border-radius: 8px; padding-top: 10px;">
+          <p style="display: inline-block;max-width: 70%;">{{ person.Bio }}</p> <a href="{% url 'textApp:chaturl' person %}" class="btn btn-primary btn-md" style="margin: 10px;"><span class="glyphicon glyphicon-comment"></span></a>
+        </div>
       </div>
-    </div>
 
-    {% endif %} {% endfor %}
+      {% endif %}
+
+    {% endif %}
+
+    {% endfor %}
   </div>
   <div>
     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
