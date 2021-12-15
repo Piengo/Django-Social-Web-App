@@ -1,3 +1,3 @@
-#Dating Web App
+# Social Web App
 
-A dating website built using python (django), vanilla javascript, html, css and some bootstrap.
+A social meet up platform (dating website) built using python with django, vanilla javascript, html, css and some bootstrap.
